@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:asyncstate/asyncstate.dart';
 
 final class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -7,15 +6,17 @@ final class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Splash Page'),
-      ),
-      body: SafeArea(
-        child: ElevatedButton(
-          onPressed: () async {
-            await Future.delayed(const Duration(seconds: 2)).asyncLoader();
-          },
-          child: const Text('Loader testing...'),
+      backgroundColor: Colors.black,
+      body: DecoratedBox(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            opacity: 0.3,
+            image: AssetImage('assets/images/background_image_chair.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Image.asset('assets/images/imgLogo.png'),
         ),
       ),
     );
