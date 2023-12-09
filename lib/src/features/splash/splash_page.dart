@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../barbershop_routes.dart';
+import '../auth/login/login_page.dart';
+
 final class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
@@ -40,9 +43,25 @@ class _SplashPageState extends State<SplashPage> {
         ),
         child: Center(
           child: AnimatedOpacity(
-            duration: const Duration(seconds: 2),
+            duration: const Duration(seconds: 4),
             curve: Curves.easeIn,
             opacity: _logoOpacityAnimation,
+            onEnd: () async {
+              await Future.delayed(const Duration(seconds: 1), () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  PageRouteBuilder(
+                    settings: const RouteSettings(name: BarbershopRoutes.login),
+                    pageBuilder: (_, animation, secondaryAnimation) {
+                      return const LoginPage();
+                    },
+                    transitionsBuilder: (_, animation, __, child) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                  ),
+                  (route) => false,
+                );
+              });
+            },
             child: AnimatedContainer(
               duration: const Duration(seconds: 4),
               curve: Curves.linearToEaseOut,
