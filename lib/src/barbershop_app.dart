@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:asyncstate/asyncstate.dart';
 
-import './features/splash/splash_page.dart';
+import './barbershop_routes.dart';
 import './core/ui/widgets/barbershop_loader.dart';
 
 final class BarbershopApp extends StatelessWidget {
@@ -15,9 +15,7 @@ final class BarbershopApp extends StatelessWidget {
         return MaterialApp(
           title: 'Blueshrine Barbershop',
           navigatorObservers: [asyncNavigatorObserver],
-          routes: {
-            '/': (_) => const SplashPage(),
-          },
+          routes: BarbershopRoutes.routes,
         );
       },
     );
