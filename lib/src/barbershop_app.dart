@@ -3,6 +3,7 @@ import 'package:asyncstate/asyncstate.dart';
 
 import './barbershop_routes.dart';
 import './core/ui/widgets/barbershop_loader.dart';
+import 'core/ui/theme/theme_configuration.dart';
 
 final class BarbershopApp extends StatelessWidget {
   const BarbershopApp({super.key});
@@ -14,6 +15,7 @@ final class BarbershopApp extends StatelessWidget {
       builder: (asyncNavigatorObserver) {
         return MaterialApp(
           title: 'Blueshrine Barbershop',
+          theme: ThemeConfiguration.themeData,
           navigatorObservers: [asyncNavigatorObserver],
           routes: BarbershopRoutes.routes,
         );
