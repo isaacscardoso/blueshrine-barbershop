@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/ui/components/custom_text_form_field.dart';
+import '../../../core/ui/styles/app_colors.dart';
+
 final class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -28,9 +31,23 @@ final class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Image.asset('assets/images/imgLogo.png'),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            label: Text('E-mail'),
+                        const SizedBox(height: 32),
+                        const CustomTextFormField(label: 'E-mail'),
+                        const SizedBox(height: 20),
+                        const CustomTextFormField(label: 'Senha'),
+                        const SizedBox(height: 24),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size.fromHeight(56),
+                          ),
+                          onPressed: () {},
+                          child: const Text('Entrar'),
+                        ),
+                        const SizedBox(height: 24),
+                        const Text(
+                          'Esqueceu a senha?',
+                          style: TextStyle(
+                            color: AppColors.brown,
                           ),
                         ),
                       ],
