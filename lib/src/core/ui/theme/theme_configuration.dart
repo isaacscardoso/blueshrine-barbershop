@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../styles/app_colors.dart';
+import '../styles/app_text_styles.dart';
 
 sealed class ThemeConfiguration {
   static const _defaultInputBorder = OutlineInputBorder(
@@ -32,5 +33,6 @@ sealed class ThemeConfiguration {
         ),
       ),
     ),
+    fontFamily: AppTextStyles.fontFamily,
   );
 }
