@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 
 import '../../core/exceptions/auth_exception.dart';
 import '../../core/funcional_program/either.dart';
+import '../../core/constants/error_messages.dart';
 import '../../core/rest_client/rest_client.dart';
 
 import './user_repository.dart';
@@ -27,16 +28,16 @@ final class UserRepositoryImpl implements UserRepository {
       return Success(data['access_token']);
     } on DioException catch (e, s) {
       if (e.response?.statusCode == 403) {
-        log('Invalid e-mail or password.', error: e, stackTrace: s);
+        log(ErrorMessages.invalidCredentials, error: e, stackTrace: s);
         return Failure(
           const UnauthorizedAuthException(
-            message: 'Invalid e-mail or password.',
+            message: ErrorMessages.invalidCredentials,
           ),
         );
       }
-      log('An error occurred while trying to log in.', error: e, stackTrace: s);
+      log(ErrorMessages.loginFailed, error: e, stackTrace: s);
       return Failure(
-        const AuthError(message: 'An error occurred while trying to log in.'),
+        const AuthError(message: ErrorMessages.loginFailed),
       );
     }
   }
